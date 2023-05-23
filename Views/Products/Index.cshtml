@@ -1,0 +1,62 @@
+﻿@using System.Threading.Tasks;
+@using CafeManagementSystemProject.Models;
+@using CafeManagementSystemProject.Services;
+@using CafeManagementSystemProject.Repositories;
+@inject ProductService IProductService;
+@model List<Product>
+
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Products</title>
+        </head>
+        <body>
+            <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Cafe Management Sysetem</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            </nav>
+            </header>
+            <div>
+                <h1>All Products</h1>
+                <ul>
+                    <li>Products: @IProductService.GetAll()</li>
+                </ul>
+                <table>
+                    <tr>
+                        <th>Product Id</th>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                        <th>Product Type</th>
+                        <th>Is it Cold</th>
+                        <th>Is it Vegan</th>
+                    </tr>
+                    @foreach (var product in Model)
+                    {
+                     <tr>
+                        <th>Product Id: @product.ProductId</th>
+                        <th>Product Name: @product.ProductName</th>
+                        <th>Product Price: @product.Price</th>
+                        <th>Product Type: @product.ProductType</th>
+                        <th>Is it Cold: @product.IsCold</th>
+                        <th>Is it Vegan: @product.IsVegan</th>
+                     </tr>
+                    }
+                </table>
+            </div>
+            <div>
+                <button>type="submit" formaction="CreateProduct.cshtml">Create Product</button>
+            </div>
+            <div>
+        <button>type="submit" formaction="DeleteProduct.cshtml">Delete Product</button>
+             </div>
+    <div>
+        <button>type="submit" formaction="EditProduct.cshtml">Edit Product</button>
+    </div>
+        </body>
+    </html>

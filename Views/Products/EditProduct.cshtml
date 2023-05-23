@@ -1,0 +1,52 @@
+﻿@using System.Threading.Tasks;
+@using CafeManagementSystemProject.Models;
+@using CafeManagementSystemProject.Services;
+@using CafeManagementSystemProject.Repositories;
+@inject ProductService IProductService;
+@inject Product product;
+@model Product;
+
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Delete Products</title>
+        </head>
+        <body>
+            <div>
+                <h1>Delete Product</h1>
+                <form method="post" asp-controller="Product" asp-action="EditProduct" asp-route-id="@Model.ProductId">
+                <p>
+                     <span>ProductId:</span>
+                     <input type="number" name="roduct_id" value="@Model.ProductId" />
+                </p>
+                 <p>
+                     <span>ProductName:</span>
+                     <input type="text" name="productName" value="@Model.ProductName" />
+                 </p>
+                 <p>
+                     <span>ProductType:</span>
+                     <input type="text" name="productType" value="@Model.ProductType"  />
+                 </p>
+                 <p>
+                     <span>Price:</span>
+                     <input type="number" name="price" value="@Model.Price" />
+                 </p>
+                 <p>
+                      <span>IsItCold:</span>
+                      <input type="checkbox" name="is_cold" value="@Model.IsCold" />
+                </p>
+                 <p>
+                      <span>IsItVegan:</span>
+                      <input type="checkbox" name="is_vegan" value="@Model.IsVegan" />
+                 </p>
+
+
+                 <button type="submit">Edit Product</button>
+                 <button>
+                     <a asp-controller="Product" asp-action="Index">Cancel</a>
+                     </button>
+                 </form>
+            </div>
+        </body>
+    </html>
+   

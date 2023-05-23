@@ -1,0 +1,33 @@
+﻿@using System.Threading.Tasks;
+@using CafeManagementSystemProject.Models;
+@using CafeManagementSystemProject.Services;
+@using CafeManagementSystemProject.Repositories;
+@inject OrderService IOrderService;
+@inject Order orders;
+@model OrdersProducts
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Remove product to order</title>
+</head>
+<body>
+    <h1>Remove product to order</h1>
+    <form method="post" asp-controller="Order" asp-action="RemoveProductToOrder" asp-route="@Model.ProductId">
+        <p>
+            <span>ProductId:</span>
+            <input type="number" name="product_id" value="@Model.ProductId" />
+        </p>
+        <p>
+            <span>OrderId:</span>
+            <input type="number" name="order_id" value="@Model.OrderId" />
+        </p>
+        <p>
+            <span>Quantity:</span>
+            <input type="number" name="quantity" value="@Model.Quantity" />
+        </p>
+
+        <button>type="submit" formaction="Index.cshtml">Remove from order</button>
+    </form>
+</body>
+</html>

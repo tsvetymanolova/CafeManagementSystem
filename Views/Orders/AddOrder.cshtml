@@ -1,0 +1,30 @@
+﻿@using System.Threading.Tasks;
+@using CafeManagementSystemProject.Models;
+@using CafeManagementSystemProject.Services;
+@using CafeManagementSystemProject.Repositories;
+@inject OrderService IOrderService;
+@inject Order orders;
+@model List<Order>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Order</title>
+</head>
+    <body>
+         <div>
+            <h1>Place your order here :)</h1>
+            <form method="post" asp-controller="OrderController" asp-action="AddOrder" asp-route="@Model.ToList()">
+                <p>
+                    <span>Oredr Id:</span>
+                    <input type="number" name="order_id" />
+                </p>
+                <p>
+                    <span>Table Number:</span>
+                    <input type="number" name="productType" />
+                </p>
+
+                <button>type="submit" formaction="AddProductToOrder.cshtml">Add Order</button>
+            </form>
+         </div>
+    </body>
+</html>

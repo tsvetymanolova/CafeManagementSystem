@@ -1,0 +1,53 @@
+﻿@using System.Threading.Tasks;
+@using CafeManagementSystemProject.Models;
+@using CafeManagementSystemProject.Services;
+@using CafeManagementSystemProject.Repositories;
+@inject OrderService IOrderService;
+@model List<Order>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orders</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Cafe Management Sysetem</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <div>
+        <h1>All Orders</h1>
+        <ul>
+            <li>Orders: @IOrderService.GetAll()</li>
+        </ul>
+        <table>
+            <tr>
+                <th>TableId</th>
+                <th>OrderId</th>
+            </tr>
+            @foreach (var order in Model)
+            {
+                <tr>
+                   <th>Table Number: @order.TableId</th>
+                   <th>Order Id: @order.OrderId</th>
+                </tr>
+            }
+        </table>
+    </div>
+    
+        <button>type="submit" formaction="AddOrder.cshtml">Add Order</button>
+    
+        <button>type="submit" formaction="AddProductToOrder.cshtml">Add Product To Order</button>
+    
+        <button>type="submit" formaction="RemoveProductFromOrder.cshtml">Remove Product From Order</button>
+        <button>type="submit" formaction="CheckOut.cshtml">Check Out</button>
+</body>
+</html>
+}
